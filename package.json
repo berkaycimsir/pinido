@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.5.2",
     "firebase": "^9.9.3",
     "vue": "^3.2.37",
     "vue-router": "4"
