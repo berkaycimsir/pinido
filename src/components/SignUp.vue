@@ -99,7 +99,7 @@ const onSubmit = async () => {
         <LoadingSpinner v-if="pictureUploadLoading" />
         <img
           v-else
-          class="h-16 w-16 object-cover rounded-full :"
+          class="h-16 w-16 object-cover rounded-full"
           :src="
             profilePictureUrl ||
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmLbR6OHvoXjzY5UWbguFvw4HQcKZkfbKP7w&usqp=CAU'

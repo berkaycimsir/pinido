@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import TodosHeader from '../components/Todos/Header.vue';
+</script>
+
 <template>
-  <div class="w-48 border-gray-400 px-4 py-2 border m-12 rounded-md">Todos</div>
+  <div class="h-full max-w-[1000px] container mx-auto mt-32 px-4">
+    <TodosHeader />
+  </div>
 </template>
