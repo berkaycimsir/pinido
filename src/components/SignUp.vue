@@ -1,28 +1,60 @@
 <script lang="ts" setup>
 import { createUserWithEmailAndPassword, updateProfile } from '@firebase/auth';
+import {
+  getDownloadURL,
+  uploadBytes,
+  ref as storageRef,
+} from '@firebase/storage';
+import { uuidv4 } from '@firebase/util';
 import { computed } from '@vue/reactivity';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { auth } from '../db';
+import { auth, storage } from '../db';
 import { handleSignUpError } from '../utils/auth';
+import LoadingSpinner from './LoadingSpinner.vue';
 
 const router = useRouter();
 
+const pictureUploadLoading = ref<boolean>(false);
 const loading = ref<boolean>(false);
 const error = ref<string | undefined>(undefined);
 
+const profilePictureUrl = ref<string | undefined>(undefined);
 const fullName = ref<string>('');
 const email = ref<string>('');
 const password = ref<string>('');
 
 const buttonDisabled = computed<boolean>(
-  () => !email.value || !password.value || !fullName.value
+  () =>
+    !email.value ||
+    !password.value ||
+    !fullName.value ||
+    !profilePictureUrl.value
 );
 
 const clear = () => {
   fullName.value = '';
   email.value = '';
   password.value = '';
+};
+
+const onFileSelected = async (e: Event) => {
+  pictureUploadLoading.value = true;
+  const selectedFile = (e.target as HTMLInputElement)?.files?.[0];
+
+  if (selectedFile) {
+    try {
+      const res = await uploadBytes(
+        storageRef(storage, `profile-picture-${uuidv4()}`),
+        selectedFile
+      );
+      profilePictureUrl.value = await getDownloadURL(res.ref);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  pictureUploadLoading.value = false;
 };
 
 const onSubmit = async () => {
@@ -38,6 +70,7 @@ const onSubmit = async () => {
     if (res.user && auth.currentUser) {
       await updateProfile(auth.currentUser, {
         displayName: fullName.value,
+        photoURL: profilePictureUrl.value,
       });
 
       router.push('/todos');
@@ -55,11 +88,34 @@ const onSubmit = async () => {
 <template>
   <form
     @submit.prevent="onSubmit"
-    class="mt-8 space-y-6"
+    class="mt-8 space-y-6 px-4"
     action="#"
     method="POST"
   >
     <input type="hidden" name="remember" value="true" />
+
+    <div class="flex items-center gap-4">
+      <div class="flex items-center justify-center shrink-0 w-16 h-16">
+        <LoadingSpinner v-if="pictureUploadLoading" />
+        <img
+          v-else
+          class="h-16 w-16 object-cover rounded-full :"
+          :src="
+            profilePictureUrl ||
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmLbR6OHvoXjzY5UWbguFvw4HQcKZkfbKP7w&usqp=CAU'
+          "
+          alt="Current profile photo"
+        />
+      </div>
+      <label class="block">
+        <input
+          @change="onFileSelected($event)"
+          type="file"
+          class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
+        />
+      </label>
+    </div>
+
     <div class="-space-y-px rounded-md shadow-sm">
       <div>
         <label for="fullname" class="sr-only">Full Name</label>

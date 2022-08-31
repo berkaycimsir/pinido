@@ -19,9 +19,7 @@ router.beforeEach(async (to, from, next) => {
   if (to.matched.some((record) => record.meta.redirectIfAuthorized)) {
     if (await getCurrentUserFromServerSide()) next('/todos');
     else next();
-  }
-
-  if (to.matched.some((record) => record.meta.requiresAuth)) {
+  } else if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (await getCurrentUserFromServerSide()) next();
     else next('/');
   } else next();
