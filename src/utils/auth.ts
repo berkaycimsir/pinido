@@ -1,4 +1,5 @@
-import { AuthErrorCodes } from 'firebase/auth';
+import { AuthErrorCodes, onAuthStateChanged, User } from 'firebase/auth';
+import { auth } from '../db';
 
 export const handleSignUpError = (error: any): string => {
   switch (error.code) {
@@ -20,4 +21,17 @@ export const handleSignInError = (error: any): string => {
     default:
       return 'Something went wrong, please try again!';
   }
+};
+
+export const getCurrentUserFromServerSide = (): Promise<User | null> => {
+  return new Promise((resolve, reject) => {
+    const removeListener = onAuthStateChanged(
+      auth,
+      (user) => {
+        removeListener();
+        resolve(user);
+      },
+      reject
+    );
+  });
 };
