@@ -386,6 +386,11 @@
   resolved "https://registry.yarnpkg.com/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.6.2.tgz#6d05fa126104c9907573364dc04147b89b530e15"
   integrity sha512-zThUKcqIU6utWzM93uEvhlh8qj8A5LMPFJPvk/ODb+8GSSif19xM2Lw1M2ijyBy8+6skSkQBbavPzOU5Oh/8tQ==
 
+"@formkit/auto-animate@^1.0.0-beta.3":
+  version "1.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@formkit/auto-animate/-/auto-animate-1.0.0-beta.3.tgz#d5eb724ccb44afba9348df32ce0b8bb10037a7ee"
+  integrity sha512-glsi+ytwQpxT/Ctr9GtcIfVr4dO6mJ04mQbNU8MFSdCdqMopHtyfU5Fib0+9lNFIeR0luY4/0NW95/2R5pKsag==
+
 "@grpc/grpc-js@^1.3.2":
   version "1.6.11"
   resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.6.11.tgz#74c04cde0cde4e8a88ffc514bd9cd1bb307815b9"
@@ -604,7 +609,7 @@
     "@vue/compiler-dom" "3.2.38"
     "@vue/shared" "3.2.38"
 
-"@vue/devtools-api@^6.1.4":
+"@vue/devtools-api@^6.1.4", "@vue/devtools-api@^6.2.1":
   version "6.2.1"
   resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.2.1.tgz#6f2948ff002ec46df01420dfeff91de16c5b4092"
   integrity sha512-OEgAMeQXvCoJ+1x8WyQuVZzFo0wcyCmUR3baRVLmKBo1LmYZWMlRiXlux5jd0fqVJu6PfDbOrZItVqUEzLobeQ==
@@ -1326,6 +1331,14 @@ pify@^2.3.0:
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
   integrity sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==
 
+pinia@^2.0.21:
+  version "2.0.21"
+  resolved "https://registry.yarnpkg.com/pinia/-/pinia-2.0.21.tgz#2a6599ad3736fa71866f4b053ffb0073cd482270"
+  integrity sha512-6ol04PtL29O0Z6JHI47O3JUSoyOJ7Og0rstXrHVMZSP4zAldsQBXJCNF0i/H7m8vp/Hjd/CSmuPl7C5QAwpeWQ==
+  dependencies:
+    "@vue/devtools-api" "^6.2.1"
+    vue-demi "*"
+
 postcss-import@^14.1.0:
   version "14.1.0"
   resolved "https://registry.yarnpkg.com/postcss-import/-/postcss-import-14.1.0.tgz#a7333ffe32f0b8795303ee9e40215dac922781f0"
@@ -1653,6 +1666,11 @@ vite@^3.0.7:
     rollup ">=2.75.6 <2.77.0 || ~2.77.0"
   optionalDependencies:
     fsevents "~2.3.2"
+
+vue-demi@*:
+  version "0.13.11"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.13.11.tgz#7d90369bdae8974d87b1973564ad390182410d99"
+  integrity sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==
 
 vue-router@4:
   version "4.1.5"

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { signOut } from '@firebase/auth';
+import { signOut, User } from '@firebase/auth';
 import { useRouter } from 'vue-router';
 import { auth } from '../../db';
 
 const router = useRouter();
 
-const user = auth.currentUser;
-const photoUrl = auth.currentUser?.photoURL as string;
+const user = auth.currentUser as User;
+const photoUrl = user.photoURL as string;
 
 const logout = async () => {
   await signOut(auth);
@@ -24,7 +24,7 @@ const logout = async () => {
         :src="photoUrl"
         alt="Current profile photo"
       />
-      <div class="font-medium">{{ user?.displayName }}</div>
+      <div class="font-medium">{{ user.displayName }}</div>
     </div>
 
     <button
