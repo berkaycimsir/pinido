@@ -3,5 +3,5 @@ const name = 'Berkay';
 </script>
 
 <template>
-  <h2>Hello {{ name }}</h2>
+  <h2 class="text-blue-400 text-lg">Hello {{ name }}</h2>
 </template>
