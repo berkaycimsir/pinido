@@ -1,16 +1,80 @@
-# Vue 3 + TypeScript + Vite
+# Pinido
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+> Pinido is a todo app to learn more about concepts like Vue3, Vite, Firebase, Pinia, Vue Router and Tailwind.
 
-## Recommended IDE Setup
+> Live demo [here](https://pinido.netlify.app).
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+## Table of Contents
 
-## Type Support For `.vue` Imports in TS
+- [General Info](#general-information)
+- [Technologies Used](#technologies-used)
+- [Setup](#setup)
+- [Project Status](#project-status)
+- [Contact](#contact)
+- [Support](#show-your-support)
+<!-- * [License](#license) -->
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+## General Information
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
+Pinido is a todo app to learn more about concepts like Vue3, Vite, Firebase, Pinia, Vue Router and Tailwind.
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+I tried to use latest versions of the technologies to stay up to date with them.
+
+## Technologies Used
+
+- **Vue3 (with typescript)**
+  - Pinia as a state manager
+  - Tailwindcss as a css framework
+  - Firebase to handle db, auth and image uploading.
+  - Vue router to achieve route management across app
+- **Firebase**
+  - Firebase storage
+  - Firebase firestore
+  - Firebase auth (email/password authentication)
+
+## Setup
+
+First, clone the repository:
+
+`git clone https://github.com/berkaycimsir/pinido.git <directory_name>`
+
+Second, go to the project folder and install dependencies:
+
+`yarn install`
+
+Then, set your environment variables:
+
+> This project uses firebase as database. You can read more about firebase from [here](https://firebase.google.com/)
+
+```ts
+// .env
+
+VITE_FIREBASE_API_KEY =
+VITE_FIREBASE_AUTH_DOMAIN =
+VITE_FIREBASE_PROJECT_ID =
+VITE_FIREBASE_STORAGE_BUCKET =
+VITE_FIREBASE_MESSAGING_SENDER_ID =
+VITE_FIREBASE_APP_ID =
+```
+
+Finally, you can start the project by running:
+
+`yarn dev`
+
+## Project Status
+
+Project is: _completed_
+
+## Contact
+
+Created by [@berkaycimsir](https://www.github.com/berkaycimsir) - feel free to contact me!
+
+👤 **Berkay Çimşir**
+
+- Website: [personal blog](https://berkaycimsir-personal-blog.deno.dev/)
+- Twitter: [@berkaycimsir](https://twitter.com/berkaycimsir)
+- Github: [@berkaycimsir](https://github.com/berkaycimsir)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
