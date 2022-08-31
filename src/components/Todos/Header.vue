@@ -2,6 +2,9 @@
 import { signOut, User } from '@firebase/auth';
 import { useRouter } from 'vue-router';
 import { auth } from '../../db';
+import { useTodosStore } from '../../store/useTodosStore';
+
+const store = useTodosStore();
 
 const router = useRouter();
 
@@ -10,6 +13,7 @@ const photoUrl = user.photoURL as string;
 
 const logout = async () => {
   await signOut(auth);
+  store.clearTodos();
   router.push('/');
 };
 </script>

@@ -12,6 +12,7 @@ export type Todo = {
 interface State {
   todos: Ref<Todo[]>;
   updateTodos: (newTodos: Todo[]) => void;
+  clearTodos: () => void;
 }
 
 export const useTodosStore = defineStore('todos', (): State => {
@@ -21,5 +22,9 @@ export const useTodosStore = defineStore('todos', (): State => {
     todos.value = newTodos.sort((a, b) => (b.completed ? -1 : 1));
   };
 
-  return { todos, updateTodos };
+  const clearTodos = () => {
+    todos.value = [];
+  };
+
+  return { todos, updateTodos, clearTodos };
 });
